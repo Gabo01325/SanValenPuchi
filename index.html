@@ -3,116 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>¿Quieres ser mi San Valentín?</title>
+    <title>¿Quieres ser mi San Valentín? 💖</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
             text-align: center;
-            background-color: #ffe6e6;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            overflow: hidden;
+            font-family: Arial, sans-serif;
+            background-color: #ffe6f2;
         }
         h1 {
-            color: #ff4d4d;
-            font-size: 2.5em;
-        }
-        p {
-            font-size: 1.2em;
-            color: #333;
-        }
-        .imagen {
-            width: 250px; /* Ajusta el tamaño de la imagen */
-            border-radius: 15px; /* Bordes redondeados */
-            margin-bottom: 15px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            color: #d63384;
         }
         .botones {
             margin-top: 20px;
-            position: relative;
         }
         button {
-            font-size: 1.5em;
-            padding: 10px 20px;
-            margin: 10px;
-            border: none;
-            cursor: pointer;
-            border-radius: 10px;
-        }
-        #si {
-            background-color: #ff4d4d;
+            background-color: #ff4d79;
             color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            border-radius: 10px;
+            cursor: pointer;
+            margin: 10px;
+            transition: 0.3s;
         }
-        #si:hover {
-            background-color: #ff1a1a;
+        button:hover {
+            background-color: #ff3366;
         }
-        #no {
-            background-color: #ccc;
-            color: black;
-            position: absolute;
+        #mensaje {
+            display: none;
+            font-size: 22px;
+            color: #d63384;
+            margin-top: 20px;
+            opacity: 0;
+            animation: aparecer 1.5s forwards;
         }
-        .corazones {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            pointer-events: none;
-            z-index: -1;
-        }
-        .corazon {
-            position: absolute;
-            color: red;
-            font-size: 2em;
-            animation: flotar 5s infinite ease-in-out;
-        }
-        @keyframes flotar {
-            0% { transform: translateY(0); opacity: 1; }
-            50% { opacity: 0.7; }
-            100% { transform: translateY(-100vh); opacity: 0; }
+        @keyframes aparecer {
+            0% { opacity: 0; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1); }
         }
     </style>
 </head>
 <body>
-    <img src="puchiyyo.jpg" alt="Imagen romántica" class="imagen">
-    <h1>💖 ¿Quieres ser mi San Valentín? 💖</h1>
-    <p>Por favor, di que sí, haré lo que sea. 🥺</p>
-    <div class="botones">
-        <button id="si">Sí 💕</button>
-        <button id="no">No 💔</button>
-    </div>
 
-    <div class="corazones"></div>
+    <h1>¿Quieres ser mi San Valentín? 💘</h1>
+    <img src="puchiyyo.jpg" alt="Imagen romántica" width="300">
+
+    <div class="botones">
+        <button onclick="mostrarMensaje()">Sí 💖</button>
+        <button onclick="moverNo(this)">No 😢</button>
+    </div>
+	<iframe width="300" height="150" src="https://www.youtube.com/embed/ubq19HWOYo4" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+
+    <p id="mensaje">wuuuu perdón por la demora puuuuuuchi, me ahce muy feliz que hayas aceptado y que hoy cumplimos 5 meses, pronto estaremos juntitos para celebrarlo como tanto deseamos jaja ¡Te amo! 💖💖💖 </p>
+	
 
     <script>
-        document.getElementById("si").addEventListener("click", function() {
-            alert("¡Sabía que dirías que sí! ❤️😍");
-        });
-
-        document.getElementById("no").addEventListener("mouseover", function() {
-            let x = Math.random() * window.innerWidth - 100;
-            let y = Math.random() * window.innerHeight - 50;
-            this.style.left = x + "px";
-            this.style.top = y + "px";
-        });
-
-        function crearCorazon() {
-            let corazon = document.createElement("div");
-            corazon.innerHTML = "❤️";
-            corazon.classList.add("corazon");
-            document.querySelector(".corazones").appendChild(corazon);
-            corazon.style.left = Math.random() * 100 + "vw";
-            corazon.style.top = "100vh";
-            corazon.style.animationDuration = (Math.random() * 3 + 2) + "s";
-            setTimeout(() => corazon.remove(), 5000);
+        function mostrarMensaje() {
+            document.getElementById("mensaje").style.display = "block";
         }
 
-        setInterval(crearCorazon, 500);
+        function moverNo(boton) {
+            let x = Math.random() * (window.innerWidth - boton.clientWidth);
+            let y = Math.random() * (window.innerHeight - boton.clientHeight);
+            boton.style.position = "absolute";
+            boton.style.left = x + "px";
+            boton.style.top = y + "px";
+        }
     </script>
+
 </body>
 </html>
